@@ -1,0 +1,443 @@
+:root {
+  --background-color: #fcfcff;
+  --text-color: #1a1d24;
+  --secondary-text-color: #6b7280;
+  --border-color: #e5e7eb;
+
+  /* 核心主色调整 */
+  --accent-color: #6366f1;
+  --accent-hover-color: #4f46e5;
+  --accent-active-color: #4338ca;
+
+  /* 辅助色增强 */
+  --gradient-start: #8b5cf6;
+  --gradient-end: #6366f1;
+}
+
+[data-theme='dark'] {
+  /* 基础色重构 */
+  --background-color: #0f0f12;
+  --surface-color: #1a1a23;
+  --text-color: #edeff4;
+  --secondary-text: #8d8f9c;
+  --border-color: #2d2d3a;
+
+  /* 核心紫色系升级 */
+  --accent-color: #c792ea;
+  --accent-hover-color: #ae74d1;
+  --accent-active-color: #8a4db5;
+
+  /* 动态效果色 */
+  --glow-effect: rgba(199, 146, 234, 0.1);
+  --neon-border: #c792ea66;
+
+  /* 辅助色适配暗黑模式 */
+  --error-color: #ff557e;
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+/* Global Styles */
+body {
+  font-family: 'Rosarivo', serif; /* Consistent font family */
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  padding: 0;
+  margin: 0;
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5%;
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  z-index: 1000;
+  box-sizing: border-box;
+  backdrop-filter: blur(5px);
+  border-bottom: 2px solid var(--border-color);
+}
+
+.logo {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: var(--accent-color); /* Logo color matches accent */
+  flex-grow: 1;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--accent-hover-color);
+}
+
+nav ul {
+  display: flex;
+  gap: 1.5rem; /* Spacing between nav items */
+  min-width: max-content;
+}
+
+nav ul li a {
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0.5rem 1.5rem;
+  border-radius: 5px;
+}
+
+nav ul li a:hover {
+  background-color: var(--accent-color);
+  color: var(--background-color);
+}
+
+svg {
+  width: 30px;
+  fill: var(--text-color); /* Ensure SVGs match the theme */
+}
+
+.toggle-theme {
+  cursor: pointer;
+  padding: 0.5rem;
+  border: none;
+  background-color: transparent;
+  color: var(--accent-color);
+  transition: color 0.3s ease;
+}
+
+.toggle-theme:hover {
+  color: var(--accent-hover-color);
+}
+
+h1,
+h2,
+h3 {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.hero {
+  --gradient-angle: 45deg;
+  --text-glow: 0 0 20px var(--glow-effect, rgba(99, 102, 241, 0.15));
+  --hero-padding: 6rem 2rem;
+  --blur-size: 80px;
+  --glow-opacity: 0.12;
+
+  position: relative;
+  min-height: 90vh;
+  padding: var(--hero-padding);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(
+    var(--gradient-angle),
+    var(--background-color) 45%,
+    var(--surface-color, rgba(255, 255, 255, 0.03))
+  );
+  overflow: hidden;
+  transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+/* Main Title */
+.hero h1 {
+  font-size: clamp(2.8rem, 8vw, 5.2rem);
+  line-height: 1.1;
+  margin: 0 auto 1.8rem;
+  max-width: 900px;
+  background: linear-gradient(
+    to right,
+    var(--text-color) 25%,
+    var(--accent-color)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: var(--text-glow);
+  opacity: 0;
+  animation: textReveal 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  transition: text-shadow 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+/* Subtitle */
+.hero p {
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  color: var(--secondary-text);
+  max-width: 680px;
+  margin: 0 auto 3rem;
+  padding: 1.2rem;
+  opacity: 0;
+  animation: fadeIn 0.6s 0.4s forwards;
+}
+
+/* Background Decorations */
+.hero::before,
+.hero::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  filter: blur(var(--blur-size));
+  opacity: var(--glow-opacity);
+  transition: background 0.5s ease-in-out;
+  animation: float 20s infinite linear;
+}
+
+/* Glow Element 1 */
+.hero::before {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(
+    circle at 30% 30%,
+    var(--accent-color),
+    transparent 70%
+  );
+}
+
+/* Glow Element 2 */
+.hero::after {
+  width: 300px;
+  height: 300px;
+  right: 10%;
+  bottom: 20%;
+  background: radial-gradient(
+    circle at 70% 70%,
+    var(--accent-hover-color),
+    transparent 70%
+  );
+  animation-duration: 25s;
+  animation-direction: reverse;
+}
+
+.hero::before,
+.hero::after {
+  transition: background 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+/* ======================
+   ANIMATIONS
+   ====================== */
+@keyframes textReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) skewY(3deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) skewY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(15px, 25px);
+  }
+  50% {
+    transform: translate(-20px, 15px);
+  }
+  75% {
+    transform: translate(10px, -20px);
+  }
+}
+
+.cta-button {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.9rem 2.2rem;
+  background: var(--accent-color);
+  color: white !important; /* 强制覆盖链接色 */
+  border-radius: 8px; /* Slightly rounder edges */
+  font-weight: 600; /* Slightly bolder */
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out,
+    background 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(199, 146, 234, 0.4);
+  background: var(--accent-hover-color);
+}
+
+/* 按钮按下动效 */
+.cta-button:active {
+  transform: translateY(1px);
+  box-shadow: 0 3px 8px rgba(199, 146, 234, 0.3);
+}
+
+/* 霓虹光晕动画 */
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 8px rgba(199, 146, 234, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(199, 146, 234, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 8px rgba(199, 146, 234, 0.5);
+  }
+}
+
+.cta-button.glow {
+  animation: pulseGlow 1.8s infinite alternate;
+}
+
+[data-theme='dark'] .cta-button {
+  background: var(--accent-active-color);
+  box-shadow: 0 4px 12px rgba(138, 77, 181, 0.3);
+}
+
+[data-theme='dark'] .cta-button:hover {
+  background: var(--accent-hover-color);
+  box-shadow: 0 6px 15px rgba(174, 116, 209, 0.4);
+}
+
+/* Sections */
+.projects,
+.work-experience,
+.education {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background-color: var(--background-color);
+}
+
+.projects ul {
+  text-align: center;
+  padding: 0;
+}
+
+.projects li {
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+}
+
+.work-experience h3 {
+  text-align: left;
+  color: var(--accent-color);
+}
+
+.work-experience article {
+  margin-bottom: 2rem;
+}
+
+.education ul {
+  list-style-type: disc;
+  padding-left: 2rem;
+}
+
+.feedback-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+blockquote {
+  border: 1px solid var(--accent-color);
+  padding: 1rem;
+  border-radius: 10px;
+  margin: 1rem 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+blockquote footer {
+  margin-top: 0.5rem;
+  font-style: italic;
+  color: var(--accent-color);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem 0;
+  border-top: 1px solid var(--border-color);
+  margin-top: 2rem;
+}
+
+footer p {
+  margin: 0;
+  color: var(--text-color);
+}
+
+footer a {
+  color: var(--accent-color);
+}
+
+footer a:hover {
+  color: var(--accent-hover-color);
+}
+
+/* Media query for desktop styles */
+@media (min-width: 768px) {
+  .hero {
+    padding: 3rem 1rem 1.5rem;
+  }
+  .hero::after {
+    margin: 1.5rem auto;
+  }
+
+  .hero::before {
+    opacity: 0.1;
+    animation-duration: 12s;
+  }
+
+  .flex-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 3rem 5%;
+    gap: 2rem;
+  }
+
+  /* Sections */
+  .projects,
+  .work-experience,
+  .education {
+    flex: 1;
+    min-width: 280px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .projects:hover,
+  .work-experience:hover,
+  .education:hover {
+    transform: translateY(-5px);
+  }
+}

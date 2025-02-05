@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Tracy Kong's Personal Portfolio" />
+    <!-- SEO Meta Tags -->
+    <meta
+      name="description"
+      content="Tracy Kong's personal portfolio showcasing skills, projects, and experience."
+    />
+    <meta
+      name="keywords"
+      content="Tracy Kong, Portfolio, Frontend Developer, Software Engineer"
+    />
+    <meta name="author" content="Tracy Kong" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rosarivo:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Tracy Kong's Portfolio</title>
+  </head>
+  <body>
+    <header>
+      <span class="logo"> TK </span>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="articles.html">Articles</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+      <button class="toggle-theme" onclick="toggleTheme()">
+        <svg
+          id="sun_icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-moon"
+        >
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+
+        <svg
+          id="moon_icon"
+          style="display: none"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-sun"
+        >
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+      </button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h1>Tracy Kong</h1>
+        <p>Frontend Developer | Software Engineer</p>
+        <p>
+          Passionate about building beautiful and functional web applications.
+          Let's create something amazing together!
+        </p>
+        <a href="#projects" class="cta-button">View My Work</a>
+      </section>
+
+      <div class="flex-wrapper">
+        <section class="projects">
+          <h2>Projects</h2>
+          <ul>
+            <li><a href="#">Personal Portfolio Website</a></li>
+            <li><a href="#">E-commerce Platform</a></li>
+            <li><a href="#">Task Management App</a></li>
+            <li><a href="#">Weather Dashboard</a></li>
+            <li><a href="#">Blog Platform</a></li>
+          </ul>
+        </section>
+
+        <section class="work-experience">
+          <h2>Work Experience</h2>
+          <article>
+            <h3>Frontend Developer at XYZ Company</h3>
+            <p>
+              Developed responsive and user-friendly web applications using
+              modern technologies like React and TypeScript.
+            </p>
+            <a href="#">View Project</a>
+          </article>
+          <article>
+            <h3>Open Source Contributor</h3>
+            <p>
+              Contributed to various open-source projects, including bug fixes
+              and feature implementations.
+            </p>
+            <a href="https://github.com/Tracy1112">Visit my GitHub Profile</a>
+          </article>
+        </section>
+
+        <section class="education">
+          <h2>Education</h2>
+          <p>Bachelor of Science in Computer Science, XYZ University</p>
+          <p>Relevant Courses:</p>
+          <ul>
+            <li>Web Development</li>
+            <li>Data Structures and Algorithms</li>
+            <li>Database Systems</li>
+            <li>Software Engineering</li>
+            <li>Artificial Intelligence</li>
+          </ul>
+        </section>
+      </div>
+
+      <aside class="reviews">
+        <h2>What People Say About Me</h2>
+        <div class="feedback-wrapper">
+          <blockquote>
+            <p>
+              Tracy is a highly skilled developer with a strong attention to
+              detail. His work is always top-notch.
+            </p>
+            <footer>Jane Doe, Senior Developer</footer>
+          </blockquote>
+          <blockquote>
+            <p>
+              Tracy is a great team player and always delivers on time. Highly
+              recommended!
+            </p>
+            <footer>John Smith, Project Manager</footer>
+          </blockquote>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Tracy Kong. All rights reserved.</p>
+      <p>
+        Contact:
+        <a href="mailto:your.email@example.com">mengyuan.k1112@gmail.com</a>
+      </p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
