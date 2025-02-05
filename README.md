@@ -8,7 +8,7 @@ Welcome to my **JavaScript-based portfolio website**! This project showcases my 
 
 ## 📸 Screenshot
 
-![Portfolio Preview](screenshot.png)
+![Portfolio Preview](Tracy-portfolio/screenshot.png)
 
 ## 📋 Features
 
